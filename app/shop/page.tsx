@@ -14,6 +14,7 @@ import {
 import { useProducts, useCategories } from "@/hooks/useProducts";
 import { ProductFilters, ProductCategory } from "@/types/shop";
 import Link from "next/link";
+import Image from "next/image";
 
 const ShopPage = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -30,11 +31,7 @@ const ShopPage = () => {
     loading: productsLoading,
     error: productsError,
   } = useProducts(filters);
-  const {
-    categories,
-    loading: categoriesLoading,
-    error: categoriesError,
-  } = useCategories();
+  const { categories, loading: categoriesLoading } = useCategories();
 
   const handleCategoryChange = (category: ProductCategory | undefined) => {
     setFilters((prev) => ({ ...prev, category }));
@@ -172,9 +169,11 @@ const ShopPage = () => {
                   >
                     <Card className="overflow-hidden h-full">
                       <div className="relative">
-                        <img
+                        <Image
                           src={product.images[0]}
                           alt={product.name}
+                          width={400}
+                          height={300}
                           className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                         {!product.inStock && (

@@ -2,16 +2,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
-import {
-  Star,
-  ArrowLeft,
-  Truck,
-  Package,
-  Ruler,
-  ShoppingCart,
-} from "lucide-react";
+import { Star, ArrowLeft, Truck, Package, ShoppingCart } from "lucide-react";
 import { useProduct } from "@/hooks/useProducts";
 import Link from "next/link";
 import Image from "next/image";
