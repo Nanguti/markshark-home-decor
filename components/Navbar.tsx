@@ -29,7 +29,7 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               className="text-xl font-bold"
             >
-              <Link href="/">MarkShark INTERIORS</Link>
+              <Link href="/">MARK-SHARK INTERIORS</Link>
             </motion.div>
 
             <div className="hidden md:flex space-x-8">
@@ -40,6 +40,7 @@ const Navbar = () => {
                 "Shop",
                 "Collections",
                 "Contact",
+                "Checkout",
               ].map((item) => (
                 <motion.div key={item} whileHover={{ scale: 1.05 }}>
                   <Link
@@ -84,7 +85,8 @@ const Navbar = () => {
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      className="absolute -top-2 -right-2 bg-cyan-700 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"
+                      className="absolute -top-2 -right-2 bg-cyan-700 text-white text-xs rounded-full w-5 h-5 flex items-center 
+                      justify-center"
                     >
                       {itemCount}
                     </motion.div>
@@ -107,7 +109,15 @@ const Navbar = () => {
         dark:bg-gray-900 z-40 top-16"
       >
         <div className="px-4 py-2">
-          {["Home", "Collections", "About", "Contact"].map((item) => (
+          {[
+            "Home",
+            "About",
+            "Services",
+            "Shop",
+            "Collections",
+            "Contact",
+            "Checkout",
+          ].map((item) => (
             <Link
               key={item}
               href={`/${
