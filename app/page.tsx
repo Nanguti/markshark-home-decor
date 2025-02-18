@@ -104,13 +104,15 @@ const Home = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6 }}
           >
-            <Button
-              size="lg"
-              className="bg-white text-gray-900 hover:bg-gray-100"
-            >
-              Explore Collections
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <Link href="/collections">
+              <Button
+                size="lg"
+                className="bg-white text-gray-900 hover:bg-gray-100"
+              >
+                Explore Collections
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </motion.section>
@@ -181,10 +183,12 @@ const Home = () => {
             ))}
           </div>
           <div className="text-center mt-12">
-            <Button variant="outline" size="lg">
-              View All Projects
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <Link href="/portfolio">
+              <Button variant="outline" size="lg">
+                View All Projects
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
         </motion.div>
       </section>
@@ -293,13 +297,15 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mt-16"
           >
-            <Button
-              size="lg"
-              className="bg-cyan-700 hover:bg-cyan-800 text-white"
-            >
-              Start Your Design Journey
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <Link href="/contact">
+              <Button
+                size="lg"
+                className="bg-cyan-700 hover:bg-cyan-800 text-white"
+              >
+                Start Your Design Journey
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -449,9 +455,11 @@ const Home = () => {
             environments that reflect your unique style and elevate your daily
             living experience.
           </p>
-          <Button variant="outline" size="lg">
-            Learn More About Us
-          </Button>
+          <Link href="/about">
+            <Button variant="outline" size="lg">
+              Learn More About Us
+            </Button>
+          </Link>
         </motion.div>
       </section>
 

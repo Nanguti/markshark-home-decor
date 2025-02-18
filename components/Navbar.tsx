@@ -29,7 +29,7 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               className="text-xl font-bold"
             >
-              <Link href="/">MARK-SHARK INTERIORS</Link>
+              <Link href="/">Finesse Executions KE</Link>
             </motion.div>
 
             <div className="hidden md:flex space-x-8">
@@ -39,6 +39,7 @@ const Navbar = () => {
                 "Services",
                 "Shop",
                 "Collections",
+                "Portfolio",
                 "Contact",
                 "Checkout",
               ].map((item) => (
@@ -116,6 +117,7 @@ const Navbar = () => {
             "Shop",
             "Collections",
             "Contact",
+            "Portfolio",
             "Checkout",
           ].map((item) => (
             <Link

@@ -33,17 +33,17 @@ const Footer = () => {
   const contactInfo = [
     {
       icon: Mail,
-      text: "hello@MarkSharkinteriors.com",
-      href: "mailto:hello@MarkSharkinteriors.com",
+      text: "hello@finesseexecutions.com",
+      href: "mailto:hello@finesseexecutions.com",
     },
     {
       icon: Phone,
-      text: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
+      text: "+254 727 906502",
+      href: "tel:+254727906502",
     },
     {
       icon: MapPin,
-      text: "123 Design Street, Creative City, 90210",
+      text: "Kiambu, Kenya",
       href: "https://maps.google.com",
     },
   ];
@@ -58,7 +58,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-50 dark:bg-gray-800">
       {/* Newsletter Section */}
-      <div className="border-b border-gray-200 dark:border-gray-700">
+      <div className="border-b border-gray-200 dark:border-gray-700 pt-16 pb-24">
         <div className="max-w-7xl mx-auto px-4 py-12">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
@@ -91,7 +91,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <h2 className="text-xl font-bold mb-4 dark:text-white">
-              <Link href="/">MarkShark INTERIORS</Link>
+              <Link href="/">~Finesse Executions KE</Link>
             </h2>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
               Transforming spaces into extraordinary experiences through
@@ -176,7 +176,7 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-600 dark:text-gray-300 text-sm">
-              © {new Date().getFullYear()} MarkShark Interiors. All rights
+              © {new Date().getFullYear()} Finesse Executions KE. All rights
               reserved.
             </p>
             <div className="flex gap-6 text-sm">

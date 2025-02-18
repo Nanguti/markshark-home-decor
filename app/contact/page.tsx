@@ -36,19 +36,19 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      details: "hello@MarkSharkinteriors.com",
-      link: "mailto:hello@MarkSharkinteriors.com",
+      details: "hello@finesseexecutions.com",
+      link: "mailto:hello@finesseexecutions.com",
     },
     {
       icon: Phone,
       title: "Phone",
-      details: "+1 (555) 123-4567",
-      link: "tel:+15551234567",
+      details: "+254 727 906502",
+      link: "tel:+254727906502",
     },
     {
       icon: MapPin,
       title: "Location",
-      details: "123 Design Street, Creative City, 90210",
+      details: "Kiambu, Kenya",
       link: "https://maps.google.com",
     },
     {
