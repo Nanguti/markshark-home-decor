@@ -1,13 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
+import { type NextApiRequest, type NextApiResponse } from "next";
 import productsData from "@/data/products.json";
 
-// Use this type for the context parameter
-type Context = {
-  params: { id: string };
-};
+// The correct type definitions for App Router route handlers
+interface RouteHandlerContext {
+  params: {
+    id: string;
+  };
+}
 
-export async function GET(req: NextRequest, context: Context) {
-  const product = productsData.products.find((p) => p.id === context.params.id);
+export async function GET(
+  request: NextRequest,
+  { params }: RouteHandlerContext
+) {
+  const product = productsData.products.find((p) => p.id === params.id);
 
   if (!product) {
     return NextResponse.json({ error: "Product not found" }, { status: 404 });
