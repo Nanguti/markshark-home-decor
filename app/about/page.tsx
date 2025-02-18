@@ -2,14 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import {
-  ChevronRight,
-  Star,
-  Users,
-  Palette,
-  Award,
-  ArrowRight,
-} from "lucide-react";
+import { Star, Users, Palette, Award, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
@@ -148,8 +141,8 @@ const AboutPage = () => {
           <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
             We believe in the transformative power of thoughtful design. Every
             space we create is a canvas where functionality meets artistry,
-            where your dreams take shape, and where life's most precious moments
-            unfold in perfect harmony.
+            where your dreams take shape, and where life is most precious
+            moments unfold in perfect harmony.
           </p>
         </motion.div>
       </section>
@@ -226,9 +219,12 @@ const AboutPage = () => {
                     index % 2 === 0 ? "md:text-right" : "md:text-left"
                   }`}
                 >
-                  <Card className="relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-lg hover:shadow-lg transition-shadow duration-300">
+                  <Card
+                    className="relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-lg hover:shadow-lg transition-shadow 
+                  duration-300"
+                  >
                     <CardContent className="p-6">
-                      <span className="text-blue-600 font-bold text-xl mb-2 block">
+                      <span className="text-cyan-700 font-bold text-xl mb-2 block">
                         {event.year}
                       </span>
                       <h3 className="text-xl font-semibold mb-2 dark:text-white">
@@ -242,7 +238,7 @@ const AboutPage = () => {
                 </div>
 
                 {/* Timeline Dot */}
-                <div className="hidden md:block w-4 h-4 bg-blue-600 rounded-full absolute left-1/2 transform -translate-x-1/2" />
+                <div className="hidden md:block w-4 h-4 bg-cyan-700 rounded-full absolute left-1/2 transform -translate-x-1/2" />
               </motion.div>
             ))}
           </div>
@@ -315,7 +311,7 @@ const AboutPage = () => {
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-8 dark:text-white">
-            Let's Create Something Extraordinary
+            Let us Create Something Extraordinary
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
             Join us in crafting spaces that inspire, comfort, and delight.
