@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Product, ProductFilters, CategoryInfo } from "@/types/shop";
+import axios, { AxiosError } from "axios";
 
 interface ProductsResponse {
   products: Product[];
@@ -22,33 +23,34 @@ export function useProducts(filters?: ProductFilters) {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const response = await fetch(
-          "/api/products?" +
-            new URLSearchParams({
-              ...(filters?.searchQuery && { searchQuery: filters.searchQuery }),
-              ...(filters?.category && { category: filters.category }),
-              ...(filters?.subCategory && { subCategory: filters.subCategory }),
-              ...(filters?.priceRange && {
-                minPrice: filters.priceRange.min.toString(),
-                maxPrice: filters.priceRange.max.toString(),
-              }),
-              ...(filters?.inStock !== undefined && {
-                inStock: filters.inStock.toString(),
-              }),
-              ...(filters?.sortBy && { sortBy: filters.sortBy }),
-              ...(filters?.page && { page: filters.page.toString() }),
-              limit: "12",
-            })
-        );
+        const { data } = await axios.get<ProductsResponse>("/api/products", {
+          params: {
+            ...(filters?.searchQuery && { searchQuery: filters.searchQuery }),
+            ...(filters?.category && { category: filters.category }),
+            ...(filters?.subCategory && { subCategory: filters.subCategory }),
+            ...(filters?.priceRange && {
+              minPrice: filters.priceRange.min.toString(),
+              maxPrice: filters.priceRange.max.toString(),
+            }),
+            ...(filters?.inStock !== undefined && {
+              inStock: filters.inStock.toString(),
+            }),
+            ...(filters?.sortBy && { sortBy: filters.sortBy }),
+            ...(filters?.page && { page: filters.page.toString() }),
+            limit: "12",
+          },
+        });
 
-        if (!response.ok) throw new Error("Failed to fetch products");
-
-        const data: ProductsResponse = await response.json();
         setProducts(data.products);
         setPagination(data.pagination);
         setError(null);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "An error occurred");
+        const error = err as AxiosError<{ message: string }>;
+        setError(
+          error.response?.data?.message ||
+            error.message ||
+            "Failed to fetch products"
+        );
       } finally {
         setLoading(false);
       }
@@ -69,14 +71,16 @@ export function useProduct(id: string) {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`/api/products/${id}`);
-        if (!response.ok) throw new Error("Failed to fetch product");
-
-        const data = await response.json();
+        const { data } = await axios.get<Product>(`/api/products/${id}`);
         setProduct(data);
         setError(null);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "An error occurred");
+        const error = err as AxiosError<{ message: string }>;
+        setError(
+          error.response?.data?.message ||
+            error.message ||
+            "Failed to fetch product"
+        );
       } finally {
         setLoading(false);
       }
@@ -99,14 +103,18 @@ export function useCategories() {
     const fetchCategories = async () => {
       try {
         setLoading(true);
-        const response = await fetch("/api/categories");
-        if (!response.ok) throw new Error("Failed to fetch categories");
-
-        const data = await response.json();
+        const { data } = await axios.get<Record<string, CategoryInfo>>(
+          "/api/categories"
+        );
         setCategories(data);
         setError(null);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "An error occurred");
+        const error = err as AxiosError<{ message: string }>;
+        setError(
+          error.response?.data?.message ||
+            error.message ||
+            "Failed to fetch categories"
+        );
       } finally {
         setLoading(false);
       }
