@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import { useProducts } from "@/hooks/useProducts";
 import Link from "next/link";
+import Image from "next/image";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -76,12 +77,21 @@ const HomePage = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
         className="h-screen flex items-center justify-center relative overflow-hidden"
-        style={{
-          backgroundImage: "url('/images/hero-1.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
       >
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0 z-0"
+        >
+          <Image
+            src="/images/hero-1.jpg"
+            alt="Hero background"
+            fill
+            className="object-cover"
+            priority
+          />
+        </motion.div>
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center text-white">
           <motion.h1
@@ -313,8 +323,8 @@ const HomePage = () => {
             Ready to Transform Your Space?
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-            Let's create something extraordinary together. Schedule a
-            consultation with our design experts.
+            We&apos;d love to hear from you. Our friendly team is always here to
+            chat about your ideas and bring them to life.
           </p>
           <Button
             size="lg"

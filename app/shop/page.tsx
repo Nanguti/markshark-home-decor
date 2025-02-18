@@ -4,13 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
-import {
-  Search,
-  Filter,
-  Star,
-  ArrowRight,
-  SlidersHorizontal,
-} from "lucide-react";
+import { Search, Star, ArrowRight, SlidersHorizontal } from "lucide-react";
 import { useProducts, useCategories } from "@/hooks/useProducts";
 import { ProductFilters, ProductCategory } from "@/types/shop";
 import Link from "next/link";

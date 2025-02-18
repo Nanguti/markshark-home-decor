@@ -218,8 +218,7 @@ const ServicesPage = () => {
             Ready to Transform Your Space?
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-            Let's collaborate to bring your vision to life. Our team of experts
-            is ready to help you create extraordinary spaces.
+            Let&apos;s bring your vision to life
           </p>
           <Button
             size="lg"
