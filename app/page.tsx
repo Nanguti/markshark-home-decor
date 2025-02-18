@@ -162,6 +162,8 @@ const HomePage = () => {
                         <Image
                           src={product.images[0]}
                           alt={product.name}
+                          width={400}
+                          height={300}
                           className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                         {!product.inStock && (
@@ -299,7 +301,7 @@ const HomePage = () => {
                 <Card className="h-full">
                   <CardContent className="p-6">
                     <p className="text-gray-600 dark:text-gray-300 mb-4">
-                      "{testimonial.text}"
+                      &ldquo;{testimonial.text}&rdquo;
                     </p>
                     <p className="font-semibold">{testimonial.name}</p>
                   </CardContent>
