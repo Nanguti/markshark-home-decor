@@ -105,7 +105,7 @@ const ContactPage = () => {
         >
           <h1 className="text-5xl md:text-7xl font-bold mb-6">Contact Us</h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
-            Let's discuss your next project
+            Let us discuss your next project
           </p>
         </motion.div>
       </section>
@@ -125,8 +125,8 @@ const ContactPage = () => {
                   Get in Touch
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300 mb-8">
-                  We'd love to hear from you. Our friendly team is always here
-                  to chat about your ideas and bring them to life.
+                  We would love to hear from you. Our friendly team is always
+                  here to chat about your ideas and bring them to life.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

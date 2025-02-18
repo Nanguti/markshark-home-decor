@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Moon, Sun, Menu, X, ArrowRight, Star } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
@@ -159,7 +159,7 @@ const HomePage = () => {
                   >
                     <Card className="overflow-hidden h-full">
                       <div className="relative">
-                        <img
+                        <Image
                           src={product.images[0]}
                           alt={product.name}
                           className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
