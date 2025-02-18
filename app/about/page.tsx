@@ -83,20 +83,20 @@ const AboutPage = () => {
     },
   ];
 
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      text: "Transformed our space beyond expectations. The attention to detail was remarkable.",
-    },
-    {
-      name: "Michael Chen",
-      text: "Professional, creative, and truly understood our vision. Highly recommended!",
-    },
-    {
-      name: "Emma Williams",
-      text: "The perfect blend of functionality and style. Our home feels completely renewed.",
-    },
-  ];
+  // const testimonials = [
+  //   {
+  //     name: "Sarah Johnson",
+  //     text: "Transformed our space beyond expectations. The attention to detail was remarkable.",
+  //   },
+  //   {
+  //     name: "Michael Chen",
+  //     text: "Professional, creative, and truly understood our vision. Highly recommended!",
+  //   },
+  //   {
+  //     name: "Emma Williams",
+  //     text: "The perfect blend of functionality and style. Our home feels completely renewed.",
+  //   },
+  // ];
 
   return (
     <div
