@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,20 +19,17 @@ import { addToCart } from "@/lib/features/cart/cartSlice";
 import { toast } from "sonner";
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 const ProductPage = ({ params }: PageProps) => {
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [quantity, setQuantity] = useState(1);
-  const [mounted, setMounted] = useState(false);
+  const [selectedImage, setSelectedImage] = React.useState(0);
+  const [quantity, setQuantity] = React.useState(1);
   const dispatch = useDispatch();
 
-  const { product, loading, error } = useProduct(params.id);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  // Unwrap params using React.use()
+  const { id } = React.use(params);
+  const { product, loading, error } = useProduct(id);
 
   const handleAddToCart = () => {
     if (product) {
@@ -54,76 +51,12 @@ const ProductPage = ({ params }: PageProps) => {
     }
   };
 
-  if (!mounted) {
-    return null; // Prevents hydration issues
-  }
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="space-y-8 w-full max-w-7xl px-4">
-          <div className="animate-pulse">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Image skeleton */}
-              <div>
-                <div className="aspect-square bg-gray-200 rounded-lg mb-4" />
-                <div className="flex gap-2">
-                  {[1, 2, 3].map((i) => (
-                    <div key={i} className="w-20 h-20 bg-gray-200 rounded-lg" />
-                  ))}
-                </div>
-              </div>
-              {/* Content skeleton */}
-              <div>
-                <div className="h-8 bg-gray-200 rounded w-3/4 mb-4" />
-                <div className="h-6 bg-gray-200 rounded w-1/4 mb-4" />
-                <div className="space-y-2">
-                  <div className="h-4 bg-gray-200 rounded w-full" />
-                  <div className="h-4 bg-gray-200 rounded w-full" />
-                  <div className="h-4 bg-gray-200 rounded w-5/6" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-red-600 mb-4">
-            Error Loading Product
-          </h2>
-          <p className="text-gray-600">{error}</p>
-          <Button onClick={() => window.history.back()} className="mt-4">
-            Go Back
-          </Button>
-        </div>
-      </div>
-    );
-  }
-
-  if (!product) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold mb-4">Product Not Found</h2>
-          <Button onClick={() => window.history.back()}>Go Back</Button>
-        </div>
-      </div>
-    );
-  }
+  if (loading) return <div className="text-center text-2xl">Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!product) return <div>Product not found</div>;
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="min-h-screen py-12 px-4"
-    >
+    <div>
       <div className="max-w-7xl mx-auto px-4 py-24">
         {/* Back Button */}
         <Link href="/shop">
@@ -292,7 +225,7 @@ const ProductPage = ({ params }: PageProps) => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
