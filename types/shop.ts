@@ -43,4 +43,5 @@ export interface ProductFilters {
   };
   inStock?: boolean;
   sortBy?: "price-asc" | "price-desc" | "rating" | "newest";
+  searchQuery?: string;
 }

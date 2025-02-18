@@ -7,6 +7,16 @@ export async function GET(request: Request) {
 
   let filteredProducts = [...productsData.products];
 
+  // Add search filter
+  if (searchParams.has("searchQuery")) {
+    const query = searchParams.get("searchQuery")?.toLowerCase();
+    filteredProducts = filteredProducts.filter(
+      (p) =>
+        p.name.toLowerCase().includes(query!) ||
+        p.description.toLowerCase().includes(query!)
+    );
+  }
+
   // Apply filters
   if (searchParams.has("category")) {
     filteredProducts = filteredProducts.filter(

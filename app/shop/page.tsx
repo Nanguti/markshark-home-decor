@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,13 +8,15 @@ import { useProducts, useCategories } from "@/hooks/useProducts";
 import { ProductFilters, ProductCategory } from "@/types/shop";
 import Link from "next/link";
 import Image from "next/image";
+import { debounce } from "lodash";
 
-const ShopPage = () => {
+const Shop = () => {
   const [filters, setFilters] = useState<ProductFilters>({
     category: undefined,
     priceRange: { min: 0, max: 10000 },
     inStock: undefined,
     sortBy: "rating",
+    searchQuery: "",
   });
   const [showFilters, setShowFilters] = useState(false);
 
@@ -24,6 +26,17 @@ const ShopPage = () => {
     error: productsError,
   } = useProducts(filters);
   const { categories, loading: categoriesLoading } = useCategories();
+
+  const debouncedSearch = useCallback(
+    debounce((searchQuery: string) => {
+      setFilters((prev) => ({ ...prev, searchQuery }));
+    }, 300),
+    []
+  );
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    debouncedSearch(e.target.value);
+  };
 
   const handleCategoryChange = (category: ProductCategory | undefined) => {
     setFilters((prev) => ({ ...prev, category }));
@@ -82,6 +95,8 @@ const ShopPage = () => {
                   placeholder="Search products..."
                   className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white
                    dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  onChange={handleSearch}
+                  defaultValue={filters.searchQuery}
                 />
               </div>
             </div>
@@ -203,4 +218,4 @@ const ShopPage = () => {
   );
 };
 
-export default ShopPage;
+export default Shop;

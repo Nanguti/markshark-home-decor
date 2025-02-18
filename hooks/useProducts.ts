@@ -13,6 +13,7 @@ export function useProducts(filters?: ProductFilters) {
         const response = await fetch(
           "/api/products?" +
             new URLSearchParams({
+              ...(filters?.searchQuery && { searchQuery: filters.searchQuery }),
               ...(filters?.category && { category: filters.category }),
               ...(filters?.subCategory && { subCategory: filters.subCategory }),
               ...(filters?.priceRange && {
