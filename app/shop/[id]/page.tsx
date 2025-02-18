@@ -21,7 +21,7 @@ const ProductPage = ({ params }: PageProps) => {
   const { id } = React.use(params);
   const { product, loading, error } = useProduct(id);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="text-center text-2xl">Loading...</div>;
   if (error) return <div>Error: {error}</div>;
   if (!product) return <div>Product not found</div>;
 
@@ -36,7 +36,7 @@ const ProductPage = ({ params }: PageProps) => {
         onThemeToggle={() => setIsDarkMode(!isDarkMode)}
       />
 
-      <div className="max-w-7xl mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 py-24">
         {/* Back Button */}
         <Link href="/shop">
           <Button variant="ghost" className="mb-8">

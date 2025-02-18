@@ -157,7 +157,7 @@ const ServicesPage = () => {
                 <Card className="h-full overflow-hidden">
                   <CardContent className="p-6">
                     <div className="mb-6">
-                      <service.icon className="h-12 w-12 text-blue-600 mb-4" />
+                      <service.icon className="h-12 w-12 text-cyan-700 mb-4" />
                       <h3 className="text-2xl font-semibold mb-3 dark:text-white">
                         {service.title}
                       </h3>
@@ -178,7 +178,7 @@ const ServicesPage = () => {
                           key={feature}
                           className="flex items-center text-gray-600 dark:text-gray-300"
                         >
-                          <CheckCircle2 className="h-5 w-5 text-blue-600 mr-2" />
+                          <CheckCircle2 className="h-5 w-5 text-cyan-700 mr-2" />
                           <span>{feature}</span>
                         </div>
                       ))}
@@ -192,7 +192,7 @@ const ServicesPage = () => {
                     >
                       <Button
                         variant="outline"
-                        className="w-full group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300"
+                        className="w-full group-hover:bg-cyan-600 group-hover:text-white transition-colors duration-300"
                       >
                         Learn More
                         <ArrowRight className="ml-2 h-4 w-4" />
@@ -222,7 +222,7 @@ const ServicesPage = () => {
           </p>
           <Button
             size="lg"
-            className="bg-blue-600 hover:bg-blue-700 text-white"
+            className="bg-cyan-700 hover:bg-cyan-800 text-white"
           >
             Schedule a Consultation
             <ArrowRight className="ml-2 h-4 w-4" />

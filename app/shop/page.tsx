@@ -47,14 +47,14 @@ const ShopPage = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative h-[40vh] flex items-center justify-center">
+      <section className="relative h-[50vh] flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: "url('/images/shop/hero.jpg')",
+            backgroundImage: "url('/images/hero.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -181,7 +181,7 @@ const ShopPage = () => {
                           {product.name}
                         </h3>
                         <div className="flex justify-between items-center mb-2">
-                          <span className="text-xl font-bold text-blue-600">
+                          <span className="text-xl font-bold text-cyan-700">
                             Ksh.{product.price.toLocaleString()}
                           </span>
                           <div className="flex items-center">
@@ -196,7 +196,7 @@ const ShopPage = () => {
                         </p>
                         <Button
                           variant="outline"
-                          className="w-full group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300"
+                          className="w-full group-hover:bg-cyan-600 group-hover:text-white transition-colors duration-300"
                         >
                           View Details
                           <ArrowRight className="ml-2 h-4 w-4" />

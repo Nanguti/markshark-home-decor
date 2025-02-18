@@ -176,7 +176,7 @@ const AboutPage = () => {
               >
                 <Card className="text-center h-full bg-white/50 dark:bg-gray-900/50 backdrop-blur-lg">
                   <CardContent className="p-6">
-                    <achievement.icon className="w-8 h-8 mx-auto mb-4 text-blue-600" />
+                    <achievement.icon className="w-8 h-8 mx-auto mb-4 text-cyan-700" />
                     <h3 className="text-4xl font-bold mb-2 dark:text-white">
                       {achievement.number}
                     </h3>
@@ -204,7 +204,10 @@ const AboutPage = () => {
           </motion.h2>
 
           {/* Timeline Line */}
-          <div className="hidden md:block absolute left-1/2 top-[150px] bottom-20 w-0.5 bg-gray-200 dark:bg-gray-700 transform -translate-x-1/2" />
+          <div
+            className="hidden md:block absolute left-1/2 top-[150px] bottom-20 w-0.5 bg-gray-200 dark:bg-gray-700
+           transform -translate-x-1/2"
+          />
 
           {/* Timeline Events */}
           <div className="relative flex flex-col space-y-8">
@@ -333,7 +336,7 @@ const AboutPage = () => {
           </p>
           <Button
             size="lg"
-            className="bg-blue-600 hover:bg-blue-700 text-white"
+            className="bg-cyan-700 hover:bg-cyan-800 text-white"
           >
             Start Your Journey
             <ArrowRight className="ml-2 h-4 w-4" />

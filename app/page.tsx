@@ -126,6 +126,195 @@ const HomePage = () => {
         </div>
       </motion.section>
 
+      {/* Recent Projects Section */}
+      <section className="py-20 px-4">
+        <motion.div
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={fadeIn}
+          className="max-w-7xl mx-auto"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            Recent Projects
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Modern Apartment",
+                location: "Nairobi CBD",
+                image: "/images/projects/project-1.jpg",
+                category: "Residential",
+              },
+              {
+                title: "Luxury Office",
+                location: "Westlands",
+                image: "/images/projects/project-2.jpg",
+                category: "Commercial",
+              },
+              {
+                title: "Boutique Hotel",
+                location: "Mombasa",
+                image: "/images/projects/project-3.jpg",
+                category: "Hospitality",
+              },
+            ].map((project, index) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="group cursor-pointer"
+              >
+                <div className="relative overflow-hidden rounded-lg">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={600}
+                    height={400}
+                    className="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div
+                    className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity 
+                  duration-300 flex flex-col justify-end p-6"
+                  >
+                    <h3 className="text-xl font-semibold text-white mb-1">
+                      {project.title}
+                    </h3>
+                    <p className="text-white/80">{project.location}</p>
+                    <span className="text-sm text-cyan-400 mt-2">
+                      {project.category}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <Button variant="outline" size="lg">
+              View All Projects
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Design Process Section */}
+      <section className="py-24 px-4 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+        <motion.div
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={fadeIn}
+          className="max-w-7xl mx-auto"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+            Our Design Process
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+            {[
+              {
+                step: "01",
+                title: "Consultation",
+                description:
+                  "Understanding your vision, needs, and style preferences",
+                icon: "💭",
+              },
+              {
+                step: "02",
+                title: "Concept Development",
+                description:
+                  "Creating detailed design concepts and mood boards",
+                icon: "✏️",
+              },
+              {
+                step: "03",
+                title: "Implementation",
+                description:
+                  "Bringing designs to life with expert craftsmanship",
+                icon: "��",
+              },
+              {
+                step: "04",
+                title: "Final Touches",
+                description: "Perfecting every detail for a stunning result",
+                icon: "✨",
+              },
+            ].map((process, index) => (
+              <motion.div
+                key={process.step}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.2,
+                  ease: "easeOut",
+                }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                <div className="group">
+                  <div className="relative z-10">
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl 
+                      transition-shadow duration-300 h-full border border-gray-100 dark:border-gray-700"
+                    >
+                      <div className="text-4xl mb-4">{process.icon}</div>
+                      <div
+                        className="absolute -top-4 -right-4 w-12 h-12 bg-cyan-700 rounded-full 
+                      flex items-center justify-center text-white font-bold transform 
+                      group-hover:rotate-12 transition-transform duration-300"
+                      >
+                        {process.step}
+                      </div>
+                      <h3 className="text-xl font-semibold mb-3 dark:text-white">
+                        {process.title}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300">
+                        {process.description}
+                      </p>
+                    </motion.div>
+                  </div>
+                </div>
+                {index < 3 && (
+                  <div
+                    className="hidden md:block absolute top-1/2 left-full w-full 
+                  transform -translate-y-1/2 -translate-x-1/2 pointer-events-none"
+                  >
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "100%" }}
+                      transition={{ duration: 0.8, delay: index * 0.2 }}
+                      viewport={{ once: true }}
+                      className="h-0.5 bg-gradient-to-r from-cyan-700 to-cyan-500"
+                    />
+                  </div>
+                )}
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mt-16"
+          >
+            <Button
+              size="lg"
+              className="bg-cyan-700 hover:bg-cyan-800 text-white"
+            >
+              Start Your Design Journey
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </motion.div>
+        </motion.div>
+      </section>
+
       {/* Featured Products Section */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
@@ -334,6 +523,69 @@ const HomePage = () => {
           >
             Book a Consultation
           </Button>
+        </motion.div>
+      </section>
+
+      {/* Services Overview */}
+      <section className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
+        <motion.div
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={fadeIn}
+          className="max-w-7xl mx-auto"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            Our Services
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Interior Design",
+                description:
+                  "Full-service interior design for residential and commercial spaces",
+                icon: "🎨",
+              },
+              {
+                title: "Space Planning",
+                description: "Optimize your space for functionality and flow",
+                icon: "",
+              },
+              {
+                title: "Custom Furniture",
+                description: "Bespoke furniture design and manufacturing",
+                icon: "🪑",
+              },
+            ].map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="group"
+              >
+                <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+                  <CardContent className="p-6 text-center">
+                    <span className="text-4xl mb-4 block">{service.icon}</span>
+                    <h3 className="text-xl font-semibold mb-2 dark:text-white">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4">
+                      {service.description}
+                    </p>
+                    <Button
+                      variant="outline"
+                      className="group-hover:bg-cyan-700 group-hover:text-white"
+                    >
+                      Learn More
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </section>
     </div>

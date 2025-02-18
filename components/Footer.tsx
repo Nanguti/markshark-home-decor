@@ -73,9 +73,10 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 flex-grow md:w-64"
+                className="px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 
+                focus:outline-none focus:ring-2 focus:ring-cyan-700 flex-grow md:w-64"
               />
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+              <Button className="bg-cyan-700 hover:bg-cyan-800 text-white">
                 Subscribe
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -101,7 +102,7 @@ const Footer = () => {
                 <a
                   key={social.label}
                   href={social.href}
-                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  className="text-gray-600 dark:text-gray-300 hover:text-cyan-700 dark:hover:text-blue-400 transition-colors"
                 >
                   <social.icon className="h-5 w-5" />
                 </a>
@@ -119,7 +120,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    className="text-gray-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-blue-400 transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -157,7 +158,8 @@ const Footer = () => {
                 <li key={info.text}>
                   <a
                     href={info.href}
-                    className="flex items-start text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    className="flex items-start text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 
+                    transition-colors"
                   >
                     <info.icon className="h-5 w-5 mr-2 mt-1 flex-shrink-0" />
                     <span>{info.text}</span>
