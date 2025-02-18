@@ -5,7 +5,10 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  const product = productsData.products.find((p) => p.id === params.id);
+  // Await the params object
+  const { id } = await params;
+
+  const product = productsData.products.find((p) => p.id === id);
 
   if (!product) {
     return NextResponse.json({ error: "Product not found" }, { status: 404 });
