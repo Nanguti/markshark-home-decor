@@ -17,11 +17,13 @@ const Shop = () => {
     inStock: undefined,
     sortBy: "rating",
     searchQuery: "",
+    page: 1,
   });
   const [showFilters, setShowFilters] = useState(false);
 
   const {
     products,
+    pagination,
     loading: productsLoading,
     error: productsError,
   } = useProducts(filters);
@@ -44,6 +46,10 @@ const Shop = () => {
 
   const handleSortChange = (sortBy: ProductFilters["sortBy"]) => {
     setFilters((prev) => ({ ...prev, sortBy }));
+  };
+
+  const handlePageChange = (page: number) => {
+    setFilters((prev) => ({ ...prev, page }));
   };
 
   return (
@@ -210,6 +216,25 @@ const Shop = () => {
                   </motion.div>
                 </Link>
               ))}
+            </div>
+          )}
+
+          {/* Pagination */}
+          {pagination && (
+            <div className="flex justify-center gap-2 mt-8">
+              {Array.from({ length: pagination.pages }, (_, i) => i + 1).map(
+                (page) => (
+                  <Button
+                    key={page}
+                    variant={
+                      page === pagination.currentPage ? "default" : "outline"
+                    }
+                    onClick={() => handlePageChange(page)}
+                  >
+                    {page}
+                  </Button>
+                )
+              )}
             </div>
           )}
         </div>

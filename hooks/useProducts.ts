@@ -1,8 +1,20 @@
 import { useState, useEffect } from "react";
 import { Product, ProductFilters, CategoryInfo } from "@/types/shop";
 
+interface ProductsResponse {
+  products: Product[];
+  pagination: {
+    total: number;
+    pages: number;
+    currentPage: number;
+    limit: number;
+  };
+}
+
 export function useProducts(filters?: ProductFilters) {
   const [products, setProducts] = useState<Product[]>([]);
+  const [pagination, setPagination] =
+    useState<ProductsResponse["pagination"]>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -24,13 +36,16 @@ export function useProducts(filters?: ProductFilters) {
                 inStock: filters.inStock.toString(),
               }),
               ...(filters?.sortBy && { sortBy: filters.sortBy }),
+              ...(filters?.page && { page: filters.page.toString() }),
+              limit: "12",
             })
         );
 
         if (!response.ok) throw new Error("Failed to fetch products");
 
-        const data = await response.json();
-        setProducts(data);
+        const data: ProductsResponse = await response.json();
+        setProducts(data.products);
+        setPagination(data.pagination);
         setError(null);
       } catch (err) {
         setError(err instanceof Error ? err.message : "An error occurred");
@@ -42,7 +57,7 @@ export function useProducts(filters?: ProductFilters) {
     fetchProducts();
   }, [filters]);
 
-  return { products, loading, error };
+  return { products, pagination, loading, error };
 }
 
 export function useProduct(id: string) {

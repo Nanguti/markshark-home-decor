@@ -62,8 +62,25 @@ export async function GET(request: Request) {
     }
   }
 
+  // Apply pagination
+  const page = parseInt(searchParams.get("page") || "1");
+  const limit = parseInt(searchParams.get("limit") || "12");
+  const startIndex = (page - 1) * limit;
+  const endIndex = startIndex + limit;
+
+  const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
+  const total = filteredProducts.length;
+
   // Simulate network delay
   await new Promise((resolve) => setTimeout(resolve, 500));
 
-  return NextResponse.json(filteredProducts);
+  return NextResponse.json({
+    products: paginatedProducts,
+    pagination: {
+      total,
+      pages: Math.ceil(total / limit),
+      currentPage: page,
+      limit,
+    },
+  });
 }
