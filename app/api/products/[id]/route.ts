@@ -1,14 +1,14 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import productsData from "@/data/products.json";
 
 export async function GET(
-  request: Request,
+  request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   const product = productsData.products.find((p) => p.id === params.id);
 
   if (!product) {
-    return new NextResponse("Product not found", { status: 404 });
+    return NextResponse.json({ error: "Product not found" }, { status: 404 });
   }
 
   // Simulate network delay
