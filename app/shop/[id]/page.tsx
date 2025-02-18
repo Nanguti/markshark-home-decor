@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
@@ -8,13 +8,17 @@ import { useProduct } from "@/hooks/useProducts";
 import Link from "next/link";
 import Image from "next/image";
 
-const ProductPage = ({ params }: { params: { id: string } }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [quantity, setQuantity] = useState(1);
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
+
+const ProductPage = ({ params }: PageProps) => {
+  const [isDarkMode, setIsDarkMode] = React.useState(false);
+  const [selectedImage, setSelectedImage] = React.useState(0);
+  const [quantity, setQuantity] = React.useState(1);
 
   // Unwrap params using React.use()
-  const id = React.use(params).id;
+  const { id } = React.use(params);
   const { product, loading, error } = useProduct(id);
 
   if (loading) return <div>Loading...</div>;
