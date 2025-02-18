@@ -5,11 +5,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Star, Users, Palette, Award, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import Navbar from "@/components/Navbar";
 
-const AboutPage = () => {
+const About = () => {
   // State definitions
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [hoveredTeamMember, setHoveredTeamMember] = useState<number | null>(
     null
   );
@@ -99,16 +97,7 @@ const AboutPage = () => {
   // ];
 
   return (
-    <div
-      className={`min-h-screen overflow-x-hidden ${
-        isDarkMode ? "dark bg-gray-900 text-white" : "bg-white text-gray-900"
-      }`}
-    >
-      <Navbar
-        isDarkMode={isDarkMode}
-        onThemeToggle={() => setIsDarkMode(!isDarkMode)}
-      />
-
+    <div>
       {/* Hero Section with Parallax */}
       <motion.section
         className="relative h-screen flex items-center justify-center overflow-hidden"
@@ -347,4 +336,4 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default About;

@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import Navbar from "@/components/Navbar";
 import {
   Mail,
   Phone,
@@ -16,9 +15,16 @@ import {
   Linkedin,
 } from "lucide-react";
 
-const ContactPage = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [formData, setFormData] = useState({
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}
+
+const Contact = () => {
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     phone: "",
@@ -69,20 +75,11 @@ const ContactPage = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev: FormData) => ({ ...prev, [name]: value }));
   };
 
   return (
-    <div
-      className={`min-h-screen ${
-        isDarkMode ? "dark bg-gray-900 text-white" : "bg-white text-gray-900"
-      }`}
-    >
-      <Navbar
-        isDarkMode={isDarkMode}
-        onThemeToggle={() => setIsDarkMode(!isDarkMode)}
-      />
-
+    <div>
       {/* Hero Section */}
       <section className="relative h-[40vh] flex items-center justify-center">
         <motion.div
@@ -300,4 +297,4 @@ const ContactPage = () => {
   );
 };
 
-export default ContactPage;
+export default Contact;

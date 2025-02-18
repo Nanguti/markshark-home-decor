@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import Navbar from "@/components/Navbar";
 import {
   Paintbrush,
   Building2,
@@ -15,7 +14,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
-const ServicesPage = () => {
+const Services = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [hoveredService, setHoveredService] = useState<number | null>(null);
 
@@ -95,16 +94,7 @@ const ServicesPage = () => {
   ];
 
   return (
-    <div
-      className={`min-h-screen ${
-        isDarkMode ? "dark bg-gray-900 text-white" : "bg-white text-gray-900"
-      }`}
-    >
-      <Navbar
-        isDarkMode={isDarkMode}
-        onThemeToggle={() => setIsDarkMode(!isDarkMode)}
-      />
-
+    <div>
       {/* Hero Section */}
       <section className="relative h-[50vh] flex items-center justify-center">
         <motion.div
@@ -233,4 +223,4 @@ const ServicesPage = () => {
   );
 };
 
-export default ServicesPage;
+export default Services;

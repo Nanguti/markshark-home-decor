@@ -3,11 +3,9 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import Navbar from "@/components/Navbar";
 import { Search, ArrowRight } from "lucide-react";
 
-const CollectionsPage = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+const Collection = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -90,16 +88,7 @@ const CollectionsPage = () => {
   });
 
   return (
-    <div
-      className={`min-h-screen ${
-        isDarkMode ? "dark bg-gray-900 text-white" : "bg-white text-gray-900"
-      }`}
-    >
-      <Navbar
-        isDarkMode={isDarkMode}
-        onThemeToggle={() => setIsDarkMode(!isDarkMode)}
-      />
-
+    <div>
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center">
         <motion.div
@@ -224,4 +213,4 @@ const CollectionsPage = () => {
   );
 };
 
-export default CollectionsPage;
+export default Collection;

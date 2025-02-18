@@ -2,40 +2,61 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import Navbar from "@/components/Navbar";
-import { Star, ArrowLeft, Truck, Package, ShoppingCart } from "lucide-react";
+import {
+  Star,
+  ArrowLeft,
+  Truck,
+  Package,
+  ShoppingCart,
+  Minus,
+  Plus,
+} from "lucide-react";
 import { useProduct } from "@/hooks/useProducts";
 import Link from "next/link";
 import Image from "next/image";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/lib/features/cart/cartSlice";
+import { toast } from "sonner";
 
 interface PageProps {
   params: Promise<{ id: string }>;
 }
 
 const ProductPage = ({ params }: PageProps) => {
-  const [isDarkMode, setIsDarkMode] = React.useState(false);
   const [selectedImage, setSelectedImage] = React.useState(0);
   const [quantity, setQuantity] = React.useState(1);
+  const dispatch = useDispatch();
 
   // Unwrap params using React.use()
   const { id } = React.use(params);
   const { product, loading, error } = useProduct(id);
+
+  const handleAddToCart = () => {
+    if (product) {
+      const cartItem = {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        quantity,
+        image: product.images[0],
+      };
+
+      try {
+        dispatch(addToCart(cartItem));
+        toast.success("Added to cart!");
+      } catch (error) {
+        console.error("Error adding to cart:", error);
+        toast.error("Failed to add to cart");
+      }
+    }
+  };
 
   if (loading) return <div className="text-center text-2xl">Loading...</div>;
   if (error) return <div>Error: {error}</div>;
   if (!product) return <div>Product not found</div>;
 
   return (
-    <div
-      className={`min-h-screen ${
-        isDarkMode ? "dark bg-gray-900 text-white" : "bg-white text-gray-900"
-      }`}
-    >
-      <Navbar
-        isDarkMode={isDarkMode}
-        onThemeToggle={() => setIsDarkMode(!isDarkMode)}
-      />
-
+    <div>
       <div className="max-w-7xl mx-auto px-4 py-24">
         {/* Back Button */}
         <Link href="/shop">
@@ -162,27 +183,29 @@ const ProductPage = ({ params }: PageProps) => {
             {/* Add to Cart Section */}
             <div className="pt-6 border-t border-gray-200 dark:border-gray-700">
               <div className="flex items-center gap-4 mb-4">
-                <div className="flex items-center border border-gray-200 dark:border-gray-700 rounded">
-                  <button
+                <div className="flex items-center border rounded-lg">
+                  <Button
+                    variant="ghost"
+                    size="icon"
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="px-3 py-2 border-r border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800"
                   >
-                    -
-                  </button>
-                  <span className="px-4 py-2">{quantity}</span>
-                  <button
+                    <Minus className="h-4 w-4" />
+                  </Button>
+                  <span className="w-12 text-center">{quantity}</span>
+                  <Button
+                    variant="ghost"
+                    size="icon"
                     onClick={() => setQuantity(quantity + 1)}
-                    className="px-3 py-2 border-l border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800"
                   >
-                    +
-                  </button>
+                    <Plus className="h-4 w-4" />
+                  </Button>
                 </div>
                 <Button
-                  size="lg"
-                  className="flex-1 bg-cyan-700 hover:bg-cyan-800 text-white"
+                  onClick={handleAddToCart}
+                  className="flex-1 bg-cyan-700 hover:bg-cyan-800"
                   disabled={!product.inStock}
                 >
-                  <ShoppingCart className="h-5 w-5 mr-2" />
+                  <ShoppingCart className="mr-2 h-4 w-4" />
                   Add to Cart
                 </Button>
               </div>

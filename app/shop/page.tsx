@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import Navbar from "@/components/Navbar";
 import { Search, Star, ArrowRight, SlidersHorizontal } from "lucide-react";
 import { useProducts, useCategories } from "@/hooks/useProducts";
 import { ProductFilters, ProductCategory } from "@/types/shop";
@@ -11,7 +10,6 @@ import Link from "next/link";
 import Image from "next/image";
 
 const ShopPage = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [filters, setFilters] = useState<ProductFilters>({
     category: undefined,
     priceRange: { min: 0, max: 10000 },
@@ -36,16 +34,7 @@ const ShopPage = () => {
   };
 
   return (
-    <div
-      className={`min-h-screen ${
-        isDarkMode ? "dark bg-gray-900 text-white" : "bg-white text-gray-900"
-      }`}
-    >
-      <Navbar
-        isDarkMode={isDarkMode}
-        onThemeToggle={() => setIsDarkMode(!isDarkMode)}
-      />
-
+    <div>
       {/* Hero Section */}
       <section className="relative h-[50vh] flex items-center justify-center">
         <motion.div

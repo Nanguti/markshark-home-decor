@@ -1,16 +1,23 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { Moon, Sun, Menu, X, ShoppingCart } from "lucide-react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { useSelector } from "react-redux";
+import { RootState } from "@/lib/store";
 
-interface NavbarProps {
-  isDarkMode: boolean;
-  onThemeToggle: () => void;
-}
-
-const Navbar = ({ isDarkMode, onThemeToggle }: NavbarProps) => {
+const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { items } = useSelector((state: RootState) => state.cart);
+  const itemCount = items.reduce((total, item) => total + item.quantity, 0);
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    // Update body class for dark mode
+    document.documentElement.classList.toggle("dark");
+  };
 
   return (
     <>
@@ -39,7 +46,7 @@ const Navbar = ({ isDarkMode, onThemeToggle }: NavbarProps) => {
                     href={`/${
                       item.toLowerCase() === "home" ? "" : item.toLowerCase()
                     }`}
-                    className="hover:text-blue-500 transition-colors"
+                    className="hover:text-cyan-500 transition-colors"
                   >
                     {item}
                   </Link>
@@ -51,7 +58,7 @@ const Navbar = ({ isDarkMode, onThemeToggle }: NavbarProps) => {
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={onThemeToggle}
+                onClick={toggleTheme}
                 className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
               >
                 {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
@@ -65,6 +72,25 @@ const Navbar = ({ isDarkMode, onThemeToggle }: NavbarProps) => {
               >
                 {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
               </motion.button>
+
+              <Link href="/cart">
+                <Button variant="ghost" size="icon" className="relative">
+                  <ShoppingCart
+                    className={`h-5 w-5 ${
+                      isDarkMode ? "text-gray-300" : "text-gray-600"
+                    }`}
+                  />
+                  {itemCount > 0 && (
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      className="absolute -top-2 -right-2 bg-cyan-700 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"
+                    >
+                      {itemCount}
+                    </motion.div>
+                  )}
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -77,7 +103,8 @@ const Navbar = ({ isDarkMode, onThemeToggle }: NavbarProps) => {
           height: isMenuOpen ? "auto" : 0,
           opacity: isMenuOpen ? 1 : 0,
         }}
-        className="md:hidden overflow-hidden fixed w-full bg-white dark:bg-gray-900 z-40 top-16"
+        className="md:hidden overflow-hidden fixed w-full bg-white 
+        dark:bg-gray-900 z-40 top-16"
       >
         <div className="px-4 py-2">
           {["Home", "Collections", "About", "Contact"].map((item) => (
@@ -86,7 +113,7 @@ const Navbar = ({ isDarkMode, onThemeToggle }: NavbarProps) => {
               href={`/${
                 item.toLowerCase() === "home" ? "" : item.toLowerCase()
               }`}
-              className="block py-2 hover:text-blue-500"
+              className="block py-2 hover:text-cyan-500"
               onClick={() => setIsMenuOpen(false)}
             >
               {item}

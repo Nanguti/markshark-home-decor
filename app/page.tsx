@@ -1,10 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import Navbar from "@/components/Navbar";
 import { useProducts } from "@/hooks/useProducts";
 import Link from "next/link";
 import Image from "next/image";
@@ -15,8 +14,7 @@ const fadeIn = {
   transition: { duration: 0.6 },
 };
 
-const HomePage = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+const Home = () => {
   const { products, loading } = useProducts();
 
   // Get top 6 products sorted by rating
@@ -61,16 +59,7 @@ const HomePage = () => {
   ];
 
   return (
-    <div
-      className={`min-h-screen ${
-        isDarkMode ? "dark bg-gray-900 text-white" : "bg-white text-gray-900"
-      }`}
-    >
-      <Navbar
-        isDarkMode={isDarkMode}
-        onThemeToggle={() => setIsDarkMode(!isDarkMode)}
-      />
-
+    <div className="min-h-screen ">
       {/* Hero Section */}
       <motion.section
         initial={{ opacity: 0 }}
@@ -592,4 +581,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;
