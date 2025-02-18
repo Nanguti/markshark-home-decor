@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
-import { Search, Filter, ArrowRight } from "lucide-react";
+import { Search, ArrowRight } from "lucide-react";
 
 const CollectionsPage = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);

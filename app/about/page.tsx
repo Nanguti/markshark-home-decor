@@ -83,6 +83,21 @@ const AboutPage = () => {
     },
   ];
 
+  const testimonials = [
+    {
+      name: "Sarah Johnson",
+      text: "Transformed our space beyond expectations. The attention to detail was remarkable.",
+    },
+    {
+      name: "Michael Chen",
+      text: "Professional, creative, and truly understood our vision. Highly recommended!",
+    },
+    {
+      name: "Emma Williams",
+      text: "The perfect blend of functionality and style. Our home feels completely renewed.",
+    },
+  ];
+
   return (
     <div
       className={`min-h-screen overflow-x-hidden ${
@@ -283,7 +298,7 @@ const AboutPage = () => {
                       className="absolute inset-0 bg-black/60 flex items-center justify-center p-6"
                     >
                       <p className="text-white text-center text-lg italic">
-                        "{member.quote}"
+                        &ldquo;{member.quote}&rdquo;
                       </p>
                     </motion.div>
                   </div>
