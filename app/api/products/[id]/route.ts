@@ -2,15 +2,17 @@ import { NextRequest, NextResponse } from "next/server";
 import productsData from "@/data/products.json";
 
 // The correct type definitions for App Router route handlers
-interface RouteHandlerContext {
-  params: {
-    id: string;
-  };
-}
+export async function GET(request: NextRequest) {
+  // Access the dynamic route parameter from the URL
+  const pathname = request.nextUrl.pathname;
+  const id = pathname.split("/").pop(); // Get the last part of the pathname
 
-export async function GET(request: NextRequest, context: RouteHandlerContext) {
-  // Wait for params to resolve
-  const { id } = await context.params;
+  if (!id) {
+    return NextResponse.json(
+      { error: "Product ID is missing" },
+      { status: 400 }
+    );
+  }
 
   const product = productsData.products.find((p) => p.id === id);
 
