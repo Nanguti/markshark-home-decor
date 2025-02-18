@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { type NextApiRequest, type NextApiResponse } from "next";
 import productsData from "@/data/products.json";
 
 // The correct type definitions for App Router route handlers
