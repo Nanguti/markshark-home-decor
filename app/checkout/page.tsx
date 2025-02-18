@@ -1,8 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { useSelector } from "react-redux";
-import { RootState } from "@/lib/store";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, CreditCard, Truck } from "lucide-react";
