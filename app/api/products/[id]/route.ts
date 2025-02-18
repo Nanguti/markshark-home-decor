@@ -1,14 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import productsData from "@/data/products.json";
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
-  // Await the params object
-  const { id } = await params;
+// Use this type for the context parameter
+type Context = {
+  params: { id: string };
+};
 
-  const product = productsData.products.find((p) => p.id === id);
+export async function GET(req: NextRequest, context: Context) {
+  const product = productsData.products.find((p) => p.id === context.params.id);
 
   if (!product) {
     return NextResponse.json({ error: "Product not found" }, { status: 404 });
