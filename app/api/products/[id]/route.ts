@@ -9,11 +9,11 @@ interface RouteHandlerContext {
   };
 }
 
-export async function GET(
-  request: NextRequest,
-  { params }: RouteHandlerContext
-) {
-  const product = productsData.products.find((p) => p.id === params.id);
+export async function GET(request: NextRequest, context: RouteHandlerContext) {
+  // Wait for params to resolve
+  const { id } = await context.params;
+
+  const product = productsData.products.find((p) => p.id === id);
 
   if (!product) {
     return NextResponse.json({ error: "Product not found" }, { status: 404 });
