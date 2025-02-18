@@ -15,7 +15,6 @@ import {
 } from "lucide-react";
 
 const Services = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [hoveredService, setHoveredService] = useState<number | null>(null);
 
   const services = [

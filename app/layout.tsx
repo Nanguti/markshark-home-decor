@@ -5,7 +5,6 @@ import Footer from "@/components/Footer";
 import { Providers } from "./providers";
 import { CartHydration } from "@/components/CartHydration";
 import Navbar from "@/components/Navbar";
-import { useState } from "react";
 
 // Load Inter for body text and Lora for elegant headings
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
