@@ -13,6 +13,7 @@ import {
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
+import Link from "next/link";
 
 const Services = () => {
   const [hoveredService, setHoveredService] = useState<number | null>(null);
@@ -209,13 +210,15 @@ const Services = () => {
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
             Let&apos;s bring your vision to life
           </p>
-          <Button
-            size="lg"
-            className="bg-cyan-700 hover:bg-cyan-800 text-white"
-          >
-            Schedule a Consultation
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+          <Link href="/contact">
+            <Button
+              size="lg"
+              className="bg-cyan-700 hover:bg-cyan-800 text-white"
+            >
+              Schedule a Consultation
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
         </motion.div>
       </section>
     </div>

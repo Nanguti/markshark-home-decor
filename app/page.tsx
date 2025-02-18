@@ -514,12 +514,14 @@ const Home = () => {
             We&apos;d love to hear from you. Our friendly team is always here to
             chat about your ideas and bring them to life.
           </p>
-          <Button
-            size="lg"
-            className="bg-cyan-700 hover:bg-cyan-800 text-white"
-          >
-            Book a Consultation
-          </Button>
+          <Link href="/contact">
+            <Button
+              size="lg"
+              className="bg-cyan-700 hover:bg-cyan-800 text-white"
+            >
+              Book a Consultation
+            </Button>
+          </Link>
         </motion.div>
       </section>
 

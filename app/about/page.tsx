@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Star, Users, Palette, Award, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
 
 const About = () => {
   // State definitions
@@ -323,13 +324,15 @@ const About = () => {
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
             Join us in crafting spaces that inspire, comfort, and delight.
           </p>
-          <Button
-            size="lg"
-            className="bg-cyan-700 hover:bg-cyan-800 text-white"
-          >
-            Start Your Journey
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+          <Link href="/contact">
+            <Button
+              size="lg"
+              className="bg-cyan-700 hover:bg-cyan-800 text-white"
+            >
+              Start Your Journey
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
         </motion.div>
       </section>
     </div>
