@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import productsData from "@/data/products.json";
 
 // Define the expected type for the product ID in the URL
-type RouteParams = {
-  id: string;
-};
+// type RouteParams = {
+//   id: string;
+// };
 
 export async function GET(request: NextRequest) {
   // Extract the product id from the URL path
